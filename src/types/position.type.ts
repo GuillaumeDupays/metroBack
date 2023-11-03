@@ -1,5 +1,5 @@
-export type GeolocationType = {
-  id: number;
+export type PositionType = {
+  id_position: number;
   latitude: number;
   longitude: number;
   precision: number;

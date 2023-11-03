@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('geolocations')
-export class GeolocationsEntity {
+@Entity('positions')
+export class PositionsEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id_positions: number;
 
   @Column({ type: 'double' })
   latitude: number;

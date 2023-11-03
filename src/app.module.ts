@@ -1,15 +1,22 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MetroStationsModule } from './metro-stations/metro-stations.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MetroStationEntity } from './metro-stations/metro-station.entity';
-import { GeolocationModule } from './geolocation/geolocation.module';
-import { GeolocationsEntity } from './geolocation/geolocation.entity';
+import { UsersModule } from './users/users.module';
+import { PositionsUtilisateursModule } from './positions_utilisateurs/positions_utilisateurs.module';
+import { LignesModule } from './lignes/lignes.module';
+import { MetrosModule } from './metros/metros.module';
+import { PositionsModule } from './positions/positions.module';
+import { IncidentsModule } from './incidents/incidents.module';
+import { UserEntity } from './users/users.entity';
+import { PositionsEntity } from './positions/positions';
+import { PositionsUtilisateursEntity } from './positions_utilisateurs/positions_utilisateurs';
+import { MetrosEntity } from './metros/metros';
+import { LignesEntity } from './lignes/lignes';
+import { IncidentsEntity } from './incidents/incidents';
 
 @Module({
   imports: [
-    MetroStationsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -17,10 +24,23 @@ import { GeolocationsEntity } from './geolocation/geolocation.entity';
       username: 'root',
       password: 'Personne15!',
       database: 'metrodb',
-      entities: [MetroStationEntity, GeolocationsEntity],
+      entities: [
+        UserEntity,
+        PositionsEntity,
+        PositionsUtilisateursEntity,
+        MetrosEntity,
+        LignesEntity,
+        IncidentsEntity,
+      ],
       synchronize: true,
     }),
-    GeolocationModule,
+
+    UsersModule,
+    PositionsUtilisateursModule,
+    LignesModule,
+    MetrosModule,
+    PositionsModule,
+    IncidentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
